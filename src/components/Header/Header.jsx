@@ -1,20 +1,24 @@
 import React from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => (
-  <header>
-    <a href="/" className="logo">
+  <header className="header">
+    <Link to="/" className="logo">
       Logo
-    </a>
+    </Link>
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <a href="/home" className="nav__link">
+          <Link to="/" className="nav__link">
             Home
-          </a>
+          </Link>
         </li>
-        <a href="/logout" className="nav__link">
-          Log out
-        </a>
+        <li className="nav__item">
+          <Link to="/logout" className="nav__link">
+            Logout
+          </Link>
+        </li>
       </ul>
     </nav>
   </header>

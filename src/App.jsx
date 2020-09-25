@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import PrivateRoute from "./PrivateRoute";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import { AuthContext } from "./context/auth";
-// import Home from "./pages/Home/Home";
+import Main from "./pages/Main/Main";
 import Login from "./pages/Login/Login";
 
 function App() {
@@ -23,8 +28,10 @@ function App() {
       <AuthContext.Provider value={{ user, setUser: setUserData }}>
         <Router>
           <Switch>
-            {/* <PrivateRoute  path="/" exact component={Home} /> */}
-            <Route path="/login" component={Login} />
+            <Route path="/login" exact>
+              {user ? <Redirect to="/" /> : <Login />}
+            </Route>
+            <PrivateRoute path="/" component={Main} />
           </Switch>
         </Router>
       </AuthContext.Provider>

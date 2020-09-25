@@ -3,7 +3,7 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import "./LoginForm.css";
 
-const LoginForm = ({ className, ...props }) => {
+const LoginForm = ({ className, authorizeUser, ...props }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +14,7 @@ const LoginForm = ({ className, ...props }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    authorizeUser(username);
   };
 
   return (
@@ -27,6 +28,7 @@ const LoginForm = ({ className, ...props }) => {
           className="login-form__input"
           type="text"
           placeholder="Username"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -35,15 +37,17 @@ const LoginForm = ({ className, ...props }) => {
         <Input
           className="login-form__input"
           placeholder="Password"
+          required
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button
+          type="button"
           className="login-form__button login-form__button_show_password"
           onClick={showPasswordHandler}
         >
-          Show
+          {showPassword ? "Hide" : "Show"}
         </Button>
       </div>
       <div className="login-form__row">
