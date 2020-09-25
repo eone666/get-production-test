@@ -13,9 +13,7 @@ import Login from "./pages/Login/Login";
 function App() {
   const [user, setUser] = useState({});
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setUser(JSON.parse(localStorage.getItem("user")));
-    }
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
   const setUserData = (data) => {
