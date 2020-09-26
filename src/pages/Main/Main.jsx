@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import List from "./EntityList/EntityList";
+import Item from "./EntityItem/EntityItem";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import NotFoundPage from "../../pages/404/404";
@@ -15,6 +16,7 @@ const Main = () => {
         <Switch>
           <Route path="/" exact component={List} />
           <Route path="/logout" exact component={Logout} />
+          <Route path="/item/:id" component={Item} />
           <Route component={NotFoundPage} />
         </Switch>
       </main>
